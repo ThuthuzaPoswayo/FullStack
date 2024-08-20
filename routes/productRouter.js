@@ -6,7 +6,7 @@ const router = express.Router()
 router.
     route('/')
         .get(fetchUsers)
-        .post(register)
+        .post(insertUser)
 
 router. 
     route('/:id')

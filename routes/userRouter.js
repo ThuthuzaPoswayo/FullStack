@@ -3,15 +3,11 @@ import { fetchUsers, fetchUser, insertUser, deleteUser, updateUser } from '../co
 
 const router = express.Router()
 
-router.
-    route('/')
-        .get(fetchUsers)
-        .post(insertUser)
+router.get('/', fetchUsers)
+router.post('/register', insertUser)
 
-router.
-    route('/:id')
-    .get(fetchUser)
-    .delete(deleteUser)
-    .patch(updateUser)
+router.get('/:id', fetchUser)
+router.delete('/delete/:id', deleteUser)
+router.patch('/update/:id', updateUser)
 
 export default router

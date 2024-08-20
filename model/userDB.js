@@ -1,6 +1,6 @@
 import {pool} from '../config/config.js'
 
-const getUsersDB = async () => {
+const  getUsersDB = async () => {
     let [data] = await pool.query('SELECT * FROM Users')
     return data
 }
@@ -12,7 +12,7 @@ const getUserDB = async (id) => {
 
 const insertUserDB = async (firstName, lastName, userAge, gender, userRole, emailAdd, userPass, userProfile) => {
     let [data] = await pool.query(`
-        INSERT INTO Users (firstName, lastName, userAge, gender, userRole, emailAdd, userPass, userProfile) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO Users (firstName, lastName, userAge, gender, emailAdd, userPass, userProfile) VALUES (?, ?, ?, ?, ?, ?, ?)
         `, [firstName, lastName, userAge, gender, userRole, emailAdd, userPass, userProfile])
 }
 

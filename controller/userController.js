@@ -10,13 +10,15 @@ const fetchUser = async (req,res) => {
 }
 
 const insertUser = async (req,res) => {
-    let {firstName, lastName, userAge, gender, userRole, emailAdd, userPass, userProfile} = req.body
+    let {firstName, lastName, userAge, gender, emailAdd, userPass, userProfile} = req.body
     console.log(req.body);
 
-    hash()
-     
-    await insertUserDB(firstName, lastName, userAge, gender, userRole, emailAdd, userPass, userProfile
-    )
+    hash(userPass, 10, async (err, hashedP) => {
+        if (err) throw err
+        console.log(hashedP)
+        
+        await insertUserDB(firstName, lastName, userAge, gender, emailAdd, hashedP, userProfile)
+    })
     res.send('Data was inserted kaloku :)')
 }
 
