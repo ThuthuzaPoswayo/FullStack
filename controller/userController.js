@@ -19,15 +19,40 @@ const insertUser = async (req,res) => {
         
         await insertUserDB(firstName, lastName, userAge, gender, emailAdd, hashedP, userProfile)
     })
-    res.send('Data was inserted kaloku :)')
+    res.send('User registered successfully :)')
 }
 
 const updateUser = async (req,res) => {
+    let {firstName, lastName, userAge, gender, userRole, emailAdd, userPass, userProfile} = req.body
+    let Users = await getUserDB(req.params.id)
 
+    hash(userPass, 10, async (err, hashedP) => {
+        if (err) throw err
+        console.log(hashedP);
+        
+        firstName?firstName=firstName:firstName=Users.firstName
+        lastName?lastName=lastName:lastName=Users.lastName
+        userAge?userAge=userAge:userAge=Users.userAge
+        gender?gender=gender:gender=Users.gender
+        userRole?userRole=userRole:userRole=Users.userRole
+        emailAdd?emailAdd=emailAdd:emailAdd=Users.emailAdd
+        hashedP?hashedP=hashedP:hashedP=Users.userPass
+        userProfile?userProfile=userProfile:userProfile=Users.userProfile
+
+        await updateUserDB(firstName, lastName, userAge, gender, userRole, emailAdd, hashedP, userProfile, req.params.id)
+        res.send('User has been updated')
+    })
 }
 
 const deleteUser = async (req,res) => {
-
+    await deleteUserDB(req.params.id)
+    res.send('User has been deleted')
 }
+
+
+
+// don't forget loginUser
+
+
 
 export { fetchUsers, insertUser, fetchUser, updateUser, deleteUser }

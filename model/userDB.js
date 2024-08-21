@@ -12,12 +12,12 @@ const getUserDB = async (id) => {
 
 const insertUserDB = async (firstName, lastName, userAge, gender, userRole, emailAdd, userPass, userProfile) => {
     let [data] = await pool.query(`
-        INSERT INTO Users (firstName, lastName, userAge, gender, emailAdd, userPass, userProfile) VALUES (?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO Users (firstName, lastName, userAge, gender, userRole, emailAdd, userPass, userProfile) VALUES (?, ?, ?, ?, ?, ?, ?)
         `, [firstName, lastName, userAge, gender, userRole, emailAdd, userPass, userProfile])
 }
 
 const updateUserDB = async (firstName, lastName, userAge, gender, userRole, emailAdd, userPass, userProfile, id) => {
-    let [data] = await pool.query('UPDATE Users SET firstName = ?, lastName = ?, userAge = ?, gender = ?, userRole = ?, emailAdd = ?, userPass = ?, userProfile = ? WHERE userID = ?', [firstName, lastName, userAge, gender, userRole, emailAdd, userPass, userProfile, id])
+     await pool.query('UPDATE Users SET firstName = ?, lastName = ?, userAge = ?, gender = ?, userRole = ?, emailAdd = ?, userPass = ?, userProfile = ? WHERE userID = ?', [firstName, lastName, userAge, gender, userRole, emailAdd, userPass, userProfile, id])
 }
 
 const deleteUserDB = async (id) => {

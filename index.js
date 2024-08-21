@@ -9,7 +9,10 @@ const app = express()
 
 app.use(express.json())
 app.use(express.static('public'))
-app.use(cors())
+app.use(cors({
+    origin: 'http://localhost:8080',
+    credentials: true
+}))
 
 app.use('/users', userRouter)
 app.use('/products', productRouter)

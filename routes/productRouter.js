@@ -1,18 +1,12 @@
 import express from 'express'
-import { fetchUsers, insertUser, fetchUser, updateUser, deleteUser } from '../controller/userController.js'
+import { fetchProducts, insertProduct, fetchProduct, updateProduct } from '../controller/productController.js'
 
 const router = express.Router()
 
-router.
-    route('/')
-        .get(fetchUsers)
-        .post(insertUser)
+router.get('/', fetchProducts)
+router.post('/addProducts', insertProduct)
 
-router. 
-    route('/:id')
-        .get(fetchUser)
-        .patch(updateUser)
-        .delete(deleteUser)
-
+router.get('/:id', fetchProduct)
+router.patch('/update/:id', updateProduct)
 
 export default router
