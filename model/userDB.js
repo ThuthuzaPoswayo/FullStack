@@ -10,10 +10,10 @@ const getUserDB = async (id) => {
     return data
 }
 
-const insertUserDB = async (firstName, lastName, userAge, gender, userRole, emailAdd, userPass, userProfile) => {
+const insertUserDB = async (firstName, lastName, userAge, gender, emailAdd, userPass, userProfile) => {
     let [data] = await pool.query(`
-        INSERT INTO Users (firstName, lastName, userAge, gender, userRole, emailAdd, userPass, userProfile) VALUES (?, ?, ?, ?, ?, ?, ?)
-        `, [firstName, lastName, userAge, gender, userRole, emailAdd, userPass, userProfile])
+        INSERT INTO Users (firstName, lastName, userAge, gender, emailAdd, userPass, userProfile) VALUES (?, ?, ?, ?, ?, ?, ?)
+        `, [firstName, lastName, userAge, gender, emailAdd, userPass, userProfile])
 }
 
 const updateUserDB = async (firstName, lastName, userAge, gender, userRole, emailAdd, userPass, userProfile, id) => {

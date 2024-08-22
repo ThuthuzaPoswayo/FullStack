@@ -49,10 +49,11 @@ const deleteUser = async (req,res) => {
     res.send('User has been deleted')
 }
 
+const loginUser = (req,res) => {
+    res.json({
+        message: "You have signed in :)",
+        token: req.body.token
+    })
+}
 
-
-// don't forget loginUser
-
-
-
-export { fetchUsers, insertUser, fetchUser, updateUser, deleteUser }
+export { fetchUsers, insertUser, fetchUser, updateUser, deleteUser, loginUser }
