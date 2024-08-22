@@ -10,7 +10,13 @@
 
           <div>
             <img src="https://thuthuzaposwayo.github.io/All-images/eShop/logos.png">
+
+            <h1>Welcome to Ytee Beauty</h1>
+
+
           </div>
+
+
           
 
       </div>
