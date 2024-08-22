@@ -1,22 +1,42 @@
 <template>
-    <div class="card">
-      <div class="card-header">
-        <slot name="cardHeader"></slot>
+  <div class="card" :class="{ 'hovered': isHovered }" @mouseover="toggleHover(true)" @mouseleave="toggleHover(false)">
+      <div id="cardTitle" class="card-header bg-success text-white mt-3">
+          <slot name="cardHeader"></slot>
       </div>
       <div class="card-body">
-        <slot name="cardBody"></slot>
+          <slot name="cardBody"></slot>
       </div>
-    </div>
-  </template>
-  
-  <script>
+  </div>
+</template>
+
+<script>
   export default {
-    name: "CardComp",
-  };
-  </script>
-  
-  <style scoped>
-  .card {
-    width: 18rem;
+      name: 'CardView',
+      data() {
+          return {
+              isHovered: false
+          };
+      },
+      methods: {
+          toggleHover(state) {
+              this.isHovered = state;
+          }
+      }
   }
-  </style>
+</script>
+
+<style scoped>
+  .card {
+      width: 15rem;
+      margin: .5rem;
+      transition: transform 0.2s ease;
+  }
+
+  .hovered {
+      transform: scale(1.5); 
+  }
+
+  #cardTitle {
+      border-radius: 10px;
+  }
+</style>
