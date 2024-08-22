@@ -20,4 +20,9 @@ const  updateProductDB = async (prodName, quantity, amount, category, prodUrl, i
     await pool.query('UPDATE Products SET prodName = ?, quantity = ?, amount = ?, category = ?, prodUrl = ? WHERE prodID = ?', [prodName, quantity, amount, category, prodUrl, id])
 }
 
-export {getProductsDB, getProductDB, insertProductDB, updateProductDB}
+const deleteProductDB = async (id) => {
+    let [data] = await pool.query('DELETE FROM Products WHERE prodID = ?', [id])
+    return data
+}
+
+export {getProductsDB, getProductDB, insertProductDB, updateProductDB, deleteProductDB}
