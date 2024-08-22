@@ -15,5 +15,8 @@ export default {
 </script>
 
 <style scoped>
-
+.lead{
+    font-family: "Abril Fatface", serif;
+    font-weight: bolder;
+}
 </style>
