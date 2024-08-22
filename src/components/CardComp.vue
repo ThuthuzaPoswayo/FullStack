@@ -37,6 +37,6 @@
   }
 
   #cardTitle {
-      border-radius: 10px;
+      border-radius: 8px;
   }
 </style>
