@@ -13,7 +13,7 @@
         </section>
       </div>
       <div class="row">
-        <section class="row" id="resume">
+        <section class="row" id="products">
           <Resume />
         </section>
       </div>
