@@ -14,9 +14,9 @@
           <template #cardPrice>
             R{{ product.amount }}
           </template>
-          <!-- <template #cardRating>
+          <template #cardRating>
             <span v-for="n in 5" :key="n" class="star" :class="{ filled: n <= product.rating }">&#9733;</span>
-          </template> -->
+          </template>
         </CardComp>
       </div>
     </div>
