@@ -33,7 +33,7 @@
               <a class="nav-link active" href="#products">Our Products</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="#productlist"> Product Details</a>
+              <a class="nav-link active" href="#productlist"> Checkout</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="#admin">Admin</a>
