@@ -3,7 +3,7 @@ import cors from 'cors'
 import userRouter from './routes/userRouter.js'
 import productRouter from './routes/productRouter.js'
 
-let port = process.env.PORT || 2004
+let port = process.env.PORT || 2004 
 
 const app = express()
 
