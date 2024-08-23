@@ -7,12 +7,12 @@ let port = process.env.PORT || 2004
 
 const app = express()
 
-app.use(express.json())
-app.use(express.static('public'))
 app.use(cors({
     origin: 'http://localhost:8083',
     credentials: true
 }))
+app.use(express.json())
+app.use(express.static('public'))
 
 app.use('/users', userRouter)
 app.use('/products', productRouter)
