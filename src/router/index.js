@@ -16,15 +16,23 @@ const routes = [
     name: 'products',
     component: () => import('@/views/ProductsView.vue')
   },
+ 
   {
-    path: '/product/:id',
-    name: 'product',
-    component: () => import('@/views/ProductDetailsView.vue')
+  path: '/admin',
+  name: 'admin',
+  component: () => import('@/views/AdminView.vue')
   },
-  
-  
+  {
+  path: '/reach-us',
+  name: 'reach-us',
+  component: () => import('@/views/ContactView.vue')
+  },
    
-  
+  {
+    path: '/single-products/:id',
+    name: 'single-products',
+    component: () => import('@/views/SingleProduct.vue')
+    }
 
 
 ]

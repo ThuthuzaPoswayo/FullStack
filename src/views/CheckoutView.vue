@@ -1,5 +1,5 @@
 <template>
-  <p>This is our productDetails></p>
+  <h1> This is the checko0ut page</h1>
 </template>
 
 <script>
