@@ -15,9 +15,11 @@
     <div class="row mt-4">
       <h3 id="headingthree">N E W &nbsp;&nbsp;&nbsp; A R R I V A L S</h3>
     </div>
-    <Spinner v-if="loading" />
+    {{  }}
+    <!-- <Spinner v-if="loading" /> -->
+    <Spinner v-if="!$store.state.recentProducts" />
     <div class="row gap-2 justify-content-center" v-else>
-      <Card v-for="product in products" :key="product.prodID">
+      <Card v-for="product in $store.state.recentProducts" :key="product.prodID">
         <template #cardHeader>
           <img
             :src="product.prodURL"
@@ -62,11 +64,21 @@ export default {
     }),
   },
   methods: {
-    fetchAllProducts() {
-      this.$store.dispatch("fetchProducts").then(() => {
-        this.loading = false; // Set loading to false once the products are fetched
-      });
+    async fetchAllProducts() {
+      this.$store.dispatch("fetchProducts")
+      
+      
+
+      // .then(() => {
+      //   this.loading = false; // Set loading to false once the products are fetched
+      // });
     },
+  },
+  computed:{
+    products() {
+      return  this.$store.state.products
+
+    }
   },
   mounted() {
     this.fetchAllProducts(); // Correctly call the method
