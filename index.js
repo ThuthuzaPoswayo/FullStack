@@ -10,7 +10,7 @@ const app = express()
 app.use(express.json())
 app.use(express.static('public'))
 app.use(cors({
-    origin: 'http://localhost:8080',
+    origin: 'http://localhost:8083',
     credentials: true
 }))
 
