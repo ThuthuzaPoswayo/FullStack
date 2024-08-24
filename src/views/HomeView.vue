@@ -13,16 +13,16 @@
     </div>
 
     <div class="row mt-4">
-      <h3 id="headingthree">N E W &nbsp;&nbsp;&nbsp; A R R I V A L S</h3>
+      <h3 class="midd" id="headingthree">N E W &nbsp;&nbsp;&nbsp; A R R I V A L S</h3>
     </div>
-    {{  }}
+    
     <!-- <Spinner v-if="loading" /> -->
     <Spinner v-if="!$store.state.recentProducts" />
-    <div class="row gap-2 justify-content-center" v-else>
+    <div class="row gap-2 justify-content-center" id="cards4" v-else>
       <Card v-for="product in $store.state.recentProducts" :key="product.prodID">
         <template #cardHeader>
           <img
-            :src="product.prodURL"
+            :src="product.prodUrl"
             loading="lazy"
             class="img-fluid"
             :alt="product.prodName"
@@ -31,11 +31,6 @@
         <template #cardBody>
           <h5 class="card-title fw-bold">{{ product.prodName }}</h5>
           <p class="lead">{{ product.prodDescription }}</p>
-          <p class="lead">
-            <span class="text-success fw-bold">Amount</span>: R{{
-              product.amount
-            }}
-          </p>
         </template>
       </Card>
     </div>
@@ -64,7 +59,7 @@ export default {
     }),
   },
   methods: {
-    async fetchAllProducts() {
+    async fetchProducts() {
       this.$store.dispatch("fetchProducts")
       
       
@@ -81,7 +76,7 @@ export default {
     }
   },
   mounted() {
-    this.fetchAllProducts(); // Correctly call the method
+    this.fetchProducts(); // Correctly call the method
   },
 };
 </script>
@@ -129,10 +124,32 @@ export default {
 #headingthree {
   font-family: "Montserrat", sans-serif;
   color: rgb(255, 109, 133);
-  text-align: left;
+  text-align: center;
   font-style: normal;
   margin-bottom: 80px;
   font-size: 60px;
   margin-top: 50px;
+  animation: moveRight 2s ease-in-out; /* Add animation to move the text to the right */
+}
+
+@keyframes moveRight {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+#cards4 {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  place-items: center;
+  margin-top: 1px;
+}
+
+/* Add styles for the cards */
+h3 {
+  text-align: center;
 }
 </style>

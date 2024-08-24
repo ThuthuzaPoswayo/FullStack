@@ -15,14 +15,13 @@
                 <th>Gender</th>
                 <th>Email</th>
                 <th>Role</th>
-                <th>Pass</th>
-                <th>Profile</th>
+                <th>Password</th>
+                <th>Edit</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="user in users" :key="user.userID">
+              <tr v-for="user in $store.state.users" :key="user.userID">
                 <td>{{ user.userID }}</td>
-                <td><img :src="user.userProfile" alt="User Image" class="user-img"></td>
                 <td>{{ user.firstName }}</td>
                 <td>{{ user.lastName }}</td>
                 <td>{{ user.userAge }}</td>
@@ -34,6 +33,7 @@
 
                 <td class="d-flex gap-2">
                   <updateUser :user="user" />
+                  <button class="btn btn-success" @click="deleteUser(user.userID)">Add User</button>
                   <button class="btn btn-danger" @click="deleteUser(user.userID)">Delete User</button>
                 </td>
               </tr>
@@ -92,6 +92,22 @@
       updateUser,
       updateProduct,
     },
+    
+    methods: {
+        getUsers() {
+            this.$store.dispatch('getUsers')
+        },
+        getProducts() {
+            this.$store.dispatch('getProducts')
+        },
+      deleteUser(userID) {
+        this.$store.dispatch("deleteUser", { id: userID });
+      },
+      deleteProduct(prodID) {
+        this.$store.dispatch("deleteProduct", { id: prodID });
+      },
+    },
+
     computed: {
       users() {
         return this.$store.state.users;
@@ -100,14 +116,10 @@
         return this.$store.state.products;
       },
     },
-    methods: {
-      deleteUser(userID) {
-        this.$store.dispatch("deleteUser", { id: userID });
-      },
-      deleteProduct(prodID) {
-        this.$store.dispatch("deleteProduct", { id: prodID });
-      },
-    },
+    mounted() {
+        this.getUsers()
+        this.getProducts()
+    }
   };
   </script>
   

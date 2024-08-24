@@ -8,7 +8,7 @@
         <slot name="cardHeader"></slot>
       </h3>
       <p class="product-price">
-        <slot name="cardPrice"></slot>
+        <slot name="cardBody"></slot>
       </p>
       <div class="product-rating">
         <slot name="cardRating"></slot>
@@ -48,6 +48,8 @@ export default {
   padding: 15px;
   margin: 10px;
   transition: transform 0.2s ease;
+  width: 282.6px;
+  height: 523.66px
 }
 
 .product-image {

@@ -41,23 +41,28 @@ export default createStore({
   },
   actions: {
     // ==== User ========
-    async fetchUsers(context) {
-      try {
-        const { results, msg } = await (await axios.get(`${apiURL}user`)).data
-        if (results) {
-          context.commit('setUsers', results)
-        } else {
-          toast.error(`${msg}`, {
-            autoClose: 2000,
-            position: toast.POSITION.BOTTOM_CENTER
-          })
-        }
-      } catch (e) {
-        toast.error(`${e.message}`, {
-          autoClose: 2000,
-          position: toast.POSITION.BOTTOM_CENTER
-        })
-      }
+    // async fetchUsers(context) {
+    //   try {
+    //     const { results, msg } = await (await axios.get(`${apiURL}user`)).data
+    //     if (results) {
+    //       context.commit('setUsers', results)
+    //     } else {
+    //       toast.error(`${msg}`, {
+    //         autoClose: 2000,
+    //         position: toast.POSITION.BOTTOM_CENTER
+    //       })
+    //     }
+    //   } catch (e) {
+    //     toast.error(`${e.message}`, {
+    //       autoClose: 2000,
+    //       position: toast.POSITION.BOTTOM_CENTER
+    //     })
+    //   }
+    // },
+    async getUsers({commit}) {
+      let {data} = await axios.get(`${apiURL}users`)
+      console.log(data);
+      commit('setUsers', data)
     },
     async fetchUser(context, id) {
       try {
@@ -185,7 +190,7 @@ export default createStore({
       try {
         const response = await axios.get(`${apiURL}products`)
         commit('setProducts', response.data)
-        let recent = response.data.filter(item => item.prodID  <3)
+        let recent = response.data.filter(item => item.prodID < 5)
         commit('setRecentProducts',recent)
       } catch (error) {
         toast.error(`${error.message}`, {
